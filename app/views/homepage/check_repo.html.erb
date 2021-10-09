@@ -1,0 +1,31 @@
+<div>
+  <%= render partial: 'form' %>
+</div>
+
+<div>
+  <% if @data['items'].present? %>
+    <table class="table">
+      <th>
+        <div class='text-center'>
+          <span class="bold">Total Count:</span> <%= @data['total_count'] %>
+          <span class="bold">Incomplete Results:</span> <%= @data['incomplete_results'] %>
+        </div>
+      </th>
+      <% @data['items'].each do |item| %>
+        <tr>
+          <table class="table">
+            <% item.each_with_index do |(key, value), index| %>
+              <tr>
+                <td><span><%= key %>: <%= value %></span></td>
+              </tr>
+            <% end %>
+          </table>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <div class='text-bottom' style='vertical-align: text-bottom'>
+      <span class="bold"> No results Found </span>
+    </div>
+  <% end %>
+</div>
